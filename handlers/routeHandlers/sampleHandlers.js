@@ -8,7 +8,7 @@ const handler = {};
 
 // function
 handler.sampleHandler = (requestProperties, callback) => {
-    console.log(requsestProperties);
+    console.log(requestProperties);
     callback(200, {
         massage: 'This is a sample url',
     });

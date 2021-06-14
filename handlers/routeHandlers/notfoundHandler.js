@@ -7,7 +7,7 @@
 const handler = {};
 
 // function
-handler.notFoundHandler = (requestsProperties, callback) => {
+handler.notFoundHandler = (requestProperties, callback) => {
     callback(404, {
         massage: 'Your requested url was not fond',
     });

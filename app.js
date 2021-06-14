@@ -1,27 +1,25 @@
 // dependency
-
 const http = require('http');
-const { handelReqRes } = require('./helpers/hendelReqRes');
+const { handleReqRes } = require('./helpers/hendleReqRes');
 
 // app object - model scaffolding
 const app = {};
 
 // configaration
-
 app.config = {
     port: 3000,
 };
 
 // create server
 app.createServer = () => {
-    const server = http.createServer(app.handelReqRes);
+    const server = http.createServer(app.handleReqRes);
     server.listen(app.config.port, () => {
-        console.log(`Your server is running on port ${app.config.port}`);
+        console.log(`your server listening to port ${app.config.port}`);
     });
 };
 
 // handle requeat response
-app.handelReqRes = handelReqRes;
+app.handleReqRes = handleReqRes;
 
 // start server
 app.createServer();

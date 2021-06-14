@@ -2,7 +2,7 @@
 const url = require('url');
 const { StringDecoder } = require('string_decoder');
 const routes = require('../routes');
-const { notFoundHandler } = require('../handlers/routeHandelers/notfoundHandler');
+const { notFoundHandler } = require('../handlers/routeHandlers/notfoundHandler');
 
 // module scafflolding
 const handler = {};
@@ -13,7 +13,7 @@ handler.handleReqRes = (req, res) => {
     const path = parsedUrl.pathname;
     const trimmedPath = path.replace(/^\/+|\/+/g, '');
     const method = req.method.toLowerCase();
-    const QueryStringObject = parsedUrl.query;
+    const queryStringObject = parsedUrl.query;
     const headersObject = req.headers;
 
     const requestProperties = {
@@ -21,16 +21,16 @@ handler.handleReqRes = (req, res) => {
         path,
         trimmedPath,
         method,
-        QueryStringObject,
+        queryStringObject,
         headersObject,
     };
 
     const decoder = new StringDecoder('utf8');
     let realData = '';
 
-    const chosenHandeler = routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler;
+    const chosenHandler = routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler;
 
-    chosenHandeler(requestProperties, (statusCode, payload) => {
+    chosenHandler(requestProperties, (statusCode, payload) => {
         statusCode = typeof statusCode === 'number' ? statusCode : 500;
         payload = typeof payload === 'object' ? payload : {};
 
@@ -49,7 +49,8 @@ handler.handleReqRes = (req, res) => {
         realData += decoder.end();
         console.log(realData);
         // response handle
-        res.end('Hello World');
+        // res.end('Hello World');
     });
 };
+
 module.exports = handler;
