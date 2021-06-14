@@ -4,11 +4,14 @@
 
 // modeule scaffolding
 
-const sampleHndeler = {};
+const handler = {};
 
 // function
-sampleHndeler.handle = () => {
-    console.log('Sample');
+handler.sampleHandler = (requestProperties, callback) => {
+    console.log(requsestProperties);
+    callback(200, {
+        massage: 'This is a sample url',
+    });
 };
 
-module.exports = sampleHndeler;
+module.exports = handler;
