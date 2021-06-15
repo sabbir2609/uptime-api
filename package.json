@@ -4,7 +4,8 @@
   "description": "an app to track link up/down via sms",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app",
+    "start": "NODE_ENV=staging nodemon app",
+    "production": "NODE_ENV=production nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sabbir2609",
