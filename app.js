@@ -2,9 +2,17 @@
 const http = require('http');
 const { handleReqRes } = require('./helpers/hendleReqRes');
 const env = require('./helpers/env');
+const data = require('./lib/data');
 
 // app object - model scaffolding
 const app = {};
+
+// testing file system
+// TO-DO : erase later
+
+data.delete('test', 'newfile', (err) => {
+    console.log(err);
+});
 
 // create server
 app.createServer = () => {
